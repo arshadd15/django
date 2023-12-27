@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>BlogPosting</title>
+      <style>
+        body, h1, h2, h3, h4, h5, h6, p {
+          margin: 0;
+          padding: 0;
+      }
+      
+      body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+      }
+      
+      .container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+      
+      .navbar {
+          background-color: #56667A;
+          display: flex;
+          color: #fff;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 5px;
+      }
+      
+      .navbar-brand a {
+          text-decoration: none;
+          color: #fff;
+          float: left;
+      }
+      
+      .navbar-brand a:hover {
+          color: #ffcc00;
+      }
+      
+      .navbar-logout {
+          margin-left: auto;
+      }
+      
+      .navbar-logout .btnout {
+          background-color: #cc0000;
+          color: #fff;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+      }
+      
+      .section {
+          margin-top: 20px;
+          border: 1px solid;
+          width: 50%;
+          margin-left: 25%;
+          background-color: #E8EBE4;
+          box-shadow: 5px 10px 15px #E8EBE4;
+      }
+      
+      .postblock {
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius:5px;
+          margin-bottom: 20px;
+          background-color: #fff;
+          color: black;
+          box-shadow: 2px 3px 7px white;
+      }
+      
+      .postblock a {
+          text-decoration: none;
+          color: #007bff;
+      }
+      
+      .postblock a:hover {
+          text-decoration: underline;
+      }
+      
+      .btn-del {
+          background-color: #cc0000;
+          color: #fff;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+          margin-top: 5px;
+      }
+
+      .btn-up{
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 5px;
+      } 
+      
+      .PostForm,
+      .CommentForm {
+          margin-top: 20px;
+      }
+      
+      .label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+      }
+      
+      .input,
+      textarea {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+      
+      .btn-submit{
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 8px 16px;
+          cursor: pointer;
+          margin-left: 45%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="nav">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <a href="/frontpage/" class="navbar-item"><strong>BlogPosting &nbsp</strong></a>
+                <p>welcome {{request.user}}</p>
+            </div>
+            <div class="navbar-logout">
+                <a href="/blogin/" class="outtext"><button class="btnout">Logout</button></a>
+            </div>
+        <nav>
+    </div>
+
+     <section class="section">
+      <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div> 
+</html>

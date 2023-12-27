@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+          margin: 0;
+          padding: 0;
+        }
+
+        /* Global styles */
+        body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          background-color: #f4f4f4;
+        }
+
+        .loginalert {
+          width: 300px;
+          margin: 50px auto;
+          background: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .loginalert h4 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .alert {
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          background-color: #f2f2f2;
+        }
+
+        .closebtn {
+          float: right;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .input {
+          width: 100%;
+          padding: 8px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+
+        .btnsub {
+          width: 100%;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+
+        .btnsub:hover {
+          background-color: #0056b3;
+        }
+
+        a {
+          text-decoration: none;
+          color: #007bff;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+        </style>
+  </head>
+
+  <body>
+    <div class="loginalert">
+      <form method="post" enctype="multipart/form" autocomplete="off">
+        {%csrf_token%}
+        <h4>Login</h4>
+        <hr />
+        {% if massage %}
+        <div class="alert">
+          {% for massage in messages %}
+          <span
+            class="closebtn"
+            onclick="this.parentElement.style.display='none';"
+            >&times;</span
+          >
+          {{message}} 
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="login">
+          <label for="username" class="label">Username</label>
+          <input
+            type="text"
+            class="input"
+            id="username"
+            name="username"
+            required
+          />
+          <label for="password" class="label">Password</label>
+          <input
+            type="password"
+            class="input"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <p>Don't have an Account? <a href="/blogsignup/">Signup</a></p>
+        <button type="submit" class="btnsub">Login</button>
+      </form>
+    </div>
+  </body>
+</html>

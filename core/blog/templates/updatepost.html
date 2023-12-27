@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>BlogPosting</title>
+      <style>
+        body, h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: #56667A;
+            display: flex;
+            color: #fff;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        
+        .navbar-brand a {
+            text-decoration: none;
+            color: #fff;
+            float: left;
+        }
+        
+        .navbar-brand a:hover {
+            color: #ffcc00;
+        }
+        
+        .navbar-logout {
+            margin-left: auto;
+        }
+        
+        .navbar-logout .btnout {
+            background-color: #cc0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        } 
+        
+        .PostForm{
+            margin-left:25%;
+            width:50%;
+            margin-top: 20px;
+            background-color: #E8EBE4;
+            box-shadow: 5px 10px 15px #E8EBE4;
+            border: 1px solid;
+            height: 500px;
+        }
+        
+        .label {
+            margin-top: 5px;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            margin-left: 100px;
+        }
+        
+        .input,
+        textarea {
+            width: 75%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 100px;
+        }
+        
+        .btn-submit{
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-left:45%;
+        }
+      </style>
+    </head>
+
+    <body>
+        <div class="nav">
+            <nav class="navbar">
+                <div class="navbar-brand">
+                    <a href="/frontpage/" class="navbar-item"><strong>BlogPosting &nbsp</strong></a>
+                    <p>welcome {{request.user}}</p>
+                </div>
+                <div class="navbar-logout">
+                    <a href="/blogin/" class="outtext"><button class="btnout">Logout</button></a>
+                </div>
+            <nav>
+        </div>        
+        <div class="PostForm">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="title" class="label">Title</label>
+                <input type="text" class="input" id="title" name="title" required>
+                <label for="slug" class="label">Slug</label>
+                <input type="text" class="input" id="slug" name="slug" required>
+                <label for="intro" class="label">Intro</label>
+                <input type="text" class="input" id="intro" name="intro" required>
+                <label for="body" class="label">Body</label>
+                <textarea class="input" id="body" name="body" required></textarea>
+                <label for="image" class="label">Image</label>
+                <input type="file" class="input" id="image" name="image" accept="image/*">
+                <button type="submit" class="btn-submit"> Publish </button>
+            </form>
+        </div>
+    </body>
+</html>

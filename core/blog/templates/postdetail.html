@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="viewpost">
+        <h3 class="title">{{Post.title}}</h3>
+        <small>Posted at {{Post.date_added}}</small>
+        <p><strong>{{Post.intro}}</strong></p>
+        <p>{{Post.body}}</p>
+        <image src="{{Post.image.url}}" alt="No image">
+    </div>
+    <hr>
+    <br>
+    <div class="comments">
+        <h3>Comments</h3>
+        <hr>
+        {% if comments %}
+        {% for comment in comments %}
+            <div class="comment">
+                <p><strong>{{ comment.name }}</strong></p>
+                <p>{{ comment.body }}</p>
+                <p>Posted on: {{ comment.date_added }}</p>
+                <!--<a href="/deletecomment/{{comment.id}}/" class="dellink"><button type="delete" class="btn-del">Delete</button></a>-->
+                <br>
+            </div>
+        {% endfor %}
+        {% else %}
+            <p>No comments yet</p>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="CommentForm">
+        <h3>Add Comment</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name" class="label">Name</label>
+            <input type="text" class="input" id="name" name="name" required>
+            <label for="body" class="label">Body</label>
+            <textarea class="input" id="body" name="body" required></textarea>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

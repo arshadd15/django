@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in Post %}
+    <div class="postblock">
+        <h2 class="subtitle">{{post.title}}</h2>
+        <small>Posted at {{post.date_added}}</small>
+        <p>{{post.intro}}</p>
+        <a href="/post/{{post.id}}/">Read more</a>
+        <a href="/deletepost/{{post.id}}/" class="dellink"><button type="delete" class="btn-del">Delete</button></a>
+        <a href="/updatepost/{{post.id}}/" class="uplink"><button type="submit" class="btn-up">Update</button></a>
+    </div>
+    {% endfor %}
+    <div class="PostForm">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="title" class="label">Title</label>
+            <input type="text" class="input" id="title" name="title" required>
+            <label for="slug" class="label">Slug</label>
+            <input type="text" class="input" id="slug" name="slug" required>
+            <label for="intro" class="label">Intro</label>
+            <input type="text" class="input" id="intro" name="intro" required>
+            <label for="body" class="label">Body</label>
+            <textarea class="input" id="body" name="body" required></textarea>
+            <label for="image" class="label">Image</label>
+            <input type="file" class="input" id="image" name="image" accept="image/*">
+            <button type="submit" class="btn-submit"> Publish </button>
+        </form>
+    </div>
+{% endblock %}
